@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World War 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-overlay"></div>
+    <div class="app-shell">
+      <header class="topbar card">
+        <div class="brand-wrap">
+          <h1>World War 2026</h1>
+        </div>
+        <div class="meta-wrap">
+          <div class="meta-pill">
+            <span>Dominação</span>
+            <strong id="dominationValue">0%</strong>
+          </div>
+          <div class="meta-pill">
+            <span>Instabilidade</span>
+            <strong id="instabilityValue">0</strong>
+          </div>
+          <div class="meta-pill">
+            <span>Ameaça</span>
+            <strong id="alienStatus">Humana</strong>
+          </div>
+          <div class="meta-pill">
+            <span>Tempo</span>
+            <strong id="gameTimeValue">00:00:00</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="resource-bar card">
+        <div class="resource-pill wood">Madeira: <strong id="res-wood">0</strong></div>
+        <div class="resource-pill steel">Aço: <strong id="res-steel">0</strong></div>
+        <div class="resource-pill oil">Petróleo: <strong id="res-oil">0</strong></div>
+        <div class="resource-pill food">Comida: <strong id="res-food">0</strong></div>
+        <div class="resource-pill science">Ciência: <strong id="res-science">0</strong></div>
+        <div class="resource-pill credits">Créditos: <strong id="res-credits">0</strong></div>
+        <div class="resource-pill alloys">Ligas: <strong id="res-alloys">0</strong></div>
+      </section>
+
+      <main class="layout">
+        <section class="globe-panel card">
+          <div class="panel-title-row">
+            <h2>Mapa Global</h2>
+            <p>Arraste para girar • toque para selecionar</p>
+          </div>
+          <div class="globe-wrap">
+            <canvas id="globeCanvas" aria-label="Globo da Terra"></canvas>
+          </div>
+          <div id="selectedCountryCard" class="selected-country-card"></div>
+          <div class="legend-row">
+            <span><i class="dot player"></i>Você</span>
+            <span><i class="dot neutral"></i>Neutro</span>
+            <span><i class="dot alien"></i>Alien</span>
+            <span><i class="dot resistance"></i>Resistência</span>
+            <span><i class="dot route"></i>Rotas</span>
+            <span><i class="dot retaliation"></i>Retaliação</span>
+          </div>
+        </section>
+
+        <section class="control-panel card">
+          <div class="tabs" id="tabs">
+            <button class="tab-btn active" data-tab="actions">Ações</button>
+            <button class="tab-btn" data-tab="army">Tropas</button>
+            <button class="tab-btn" data-tab="research">Tech</button>
+            <button class="tab-btn" data-tab="world">Mundo</button>
+            <button class="tab-btn" data-tab="tutorial">Guia</button>
+            <button class="tab-btn" data-tab="queue">Fila</button>
+          </div>
+
+          <div class="quick-queue">
+            <div class="quick-queue-header">
+              <h3>Fila ativa</h3>
+              <span id="quickQueueCount">0</span>
+            </div>
+            <div id="quickQueueList" class="quick-queue-list"></div>
+          </div>
+
+          <div class="tab-panels">
+            <section class="tab-panel active" data-tab="actions">
+              <h3>Coletas</h3>
+              <div id="collectionActions" class="action-grid"></div>
+
+              <h3>Infra</h3>
+              <div id="infrastructureActions" class="action-grid"></div>
+
+              <h3>Guerra</h3>
+              <div id="warActions" class="action-grid"></div>
+            </section>
+
+            <section class="tab-panel" data-tab="army">
+              <h3>Poder</h3>
+              <div id="armyStats" class="army-stats"></div>
+
+              <h3>Treino</h3>
+              <div id="trainingActions" class="action-grid"></div>
+
+              <h3>Doutrina</h3>
+              <div id="doctrineActions" class="action-grid"></div>
+            </section>
+
+            <section class="tab-panel" data-tab="research">
+              <h3>Projetos de Pesquisa</h3>
+              <div id="researchActions" class="action-grid"></div>
+            </section>
+
+            <section class="tab-panel" data-tab="world">
+              <h3>Mundo</h3>
+              <div id="worldOverview" class="world-overview"></div>
+              <div id="countryList" class="country-list"></div>
+            </section>
+
+            <section class="tab-panel" data-tab="tutorial">
+              <h3>Guia rápido</h3>
+              <div id="tutorialGuide" class="tutorial-guide"></div>
+            </section>
+
+            <section class="tab-panel" data-tab="queue">
+              <h3>Fila</h3>
+              <div id="queueList" class="queue-list"></div>
+
+              <h3>Log</h3>
+              <div id="logList" class="log-list"></div>
+            </section>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer-tools card">
+        <button id="visualPresetBtn" class="tool-btn">Visual</button>
+        <button id="easyModeBtn" class="tool-btn">Fácil: OFF</button>
+        <button id="helpBtn" class="tool-btn">Ajuda</button>
+        <button id="saveBtn" class="tool-btn">Salvar</button>
+        <button id="exportBtn" class="tool-btn">Exportar</button>
+        <button id="importBtn" class="tool-btn">Importar</button>
+        <button id="resetBtn" class="tool-btn danger">Reiniciar</button>
+        <input id="importFileInput" type="file" accept="application/json" hidden />
+      </footer>
+    </div>
+
+      <div id="startModal" class="modal hidden" role="dialog" aria-modal="true">
+        <div class="modal-content">
+          <h2>Escolha seu País Inicial</h2>
+          <p>Ele será sua base principal.</p>
+          <div id="startCountryList" class="start-country-list"></div>
+        </div>
+      </div>
+
+      <div id="toastHost" class="toast-host" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
