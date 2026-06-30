@@ -30,7 +30,7 @@ Abra index.html no navegador.
 
 ## Deploy / Demonstracao
 
-Publique a pasta raiz no Netlify.
+https://worldwar2026.netlify.app/
 
 ## Repositorio
 
